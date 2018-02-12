@@ -2,6 +2,9 @@ import React from 'react';
 import Login from './login';
 import RegisterForm from './registration';
 import EmpList from './emplist';
+import Header from './header';
+import Footer from './footer';
+
 import {BrowserRouter as Router,
         Route,
         NavLink
@@ -62,7 +65,7 @@ const Home=()=>{
         </div></div>
     )
 }
-class Main extends React.Component{
+class Routes extends React.Component{
     render(){
         return(
             <Router>
@@ -75,11 +78,28 @@ class Main extends React.Component{
                     <Route exact path='/register' component={RegisterForm} />
                     <Route  path='/login' component={Login} />
                     <Route  path='/emplist' component={EmpList} />
+                    <Route  path='/main' component={Main} />
                 </div>
                 </div>
             </Router>
 
         )
     }
+}
+const Main=()=>{
+    return(
+        <div>
+            <div className="col-md-12 bg-info modal-header">
+                <Header/>
+            </div>
+            <div className="container-fluid main" >
+                <Routes/>
+            </div>
+
+            <div className="col-md-12 bg-info footer">
+                <Footer/>
+            </div>
+        </div>
+    )
 }
 export default Main;
